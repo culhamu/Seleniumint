@@ -25,13 +25,16 @@ public class C02_IlkTest {
         }else {
             System.out.println("Url test FAILED");
             System.out.println("actual url : "+actualUrl);
+            System.out.println("actual url "+expectedUrlIcerik+" kelimesini içermiyor");
         }
         //Title test yapalım...
         if (actualTitle.contains(expectedTitleIcerik)){
             System.out.println("Title test PASSED");
+
         }else {
             System.out.println("Title test FAILED");
             System.out.println("actual title : "+actualTitle);
+            System.out.println("actual title "+expectedTitleIcerik+" kelimesini içermiyor...");
         }
 
         driver.quit();
