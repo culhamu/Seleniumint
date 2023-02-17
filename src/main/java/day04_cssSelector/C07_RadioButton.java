@@ -5,9 +5,12 @@ import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
 import org.openqa.selenium.By;
+import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.WebElement;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.edge.EdgeDriver;
+import org.openqa.selenium.interactions.Actions;
 
 import java.time.Duration;
 
@@ -32,16 +35,36 @@ public class C07_RadioButton {
         driver.get("https://facebook.com");
         // b. Create an account buton’una basin
         driver.findElement(By.xpath("(//a[@role='button'])[2]")).click();
+
         // c. Radio button elementlerini locate edin ve size uygun olani secin
-        driver.findElement(By.xpath("//*[@id=\"u_2_b_/z\"]")).sendKeys("Ahmet Ali");
-        driver.findElement(By.xpath("//*[@id=\"u_2_d_XL\"]")).sendKeys("Varlıbaşlık");
-        driver.findElement(By.xpath("//*[@id=\"u_2_g_YM\"]")).sendKeys("maeklsesgıe45@hotmail.com");
-        driver.findElement(By.xpath("//*[@id=\"password_step_input\"]")).sendKeys("Sananelan.19587ü");
-        driver.findElement(By.id("day")).sendKeys("15");
-        driver.findElement(By.id("month")).sendKeys("05");
-        driver.findElement(By.id("year")).sendKeys("1995");
-        driver.findElement(By.xpath("//label[text()='Erkek']")).click();
-        driver.findElement(By.id("u_9_s_r2")).click();
+        WebElement kaydol= driver.findElement(By.xpath("(//input[@type='text'])[2]"));
+        Actions actions=new Actions(driver);
+        actions.click(kaydol)
+                .sendKeys("ali")
+                .sendKeys(Keys.TAB)
+                .sendKeys("Adiguzel")
+                .sendKeys(Keys.TAB)
+                .sendKeys("5548976536")
+                .sendKeys(Keys.TAB)
+                .sendKeys("12346798")
+                .sendKeys(Keys.TAB)
+                .sendKeys(Keys.TAB)
+                .sendKeys("30")
+                .sendKeys(Keys.TAB)
+                .sendKeys("Haz")
+                .sendKeys(Keys.TAB)
+                .sendKeys("1995")
+                .sendKeys(Keys.TAB)
+                .sendKeys(Keys.TAB)
+                .sendKeys(Keys.RIGHT)
+                .sendKeys(Keys.TAB)
+                .sendKeys(Keys.TAB)
+                .sendKeys(Keys.TAB)
+                .sendKeys(Keys.TAB)
+                .sendKeys(Keys.TAB)
+                .sendKeys(Keys.ENTER).perform();
+
+
     }
 
 
