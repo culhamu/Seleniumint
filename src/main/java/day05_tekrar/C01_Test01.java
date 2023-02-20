@@ -76,8 +76,7 @@ public class C01_Test01 {
         // 15. Click 'Continue' button
         driver.findElement(By.xpath("//a[text()='Continue']")).click();
         // 16. Verify that 'Logged in as username' is visible
-        WebElement cookies=driver.findElement(By.xpath("//*[@id=\"dismiss-button\"]/div/span"));
-        cookies.submit();
+       driver.manage().deleteAllCookies();
         WebElement username=driver.findElement(By.xpath("//a[text()=' Logged in as ']"));
         Assert.assertTrue(username.isDisplayed());
         // 17. Click 'Delete Account' button
