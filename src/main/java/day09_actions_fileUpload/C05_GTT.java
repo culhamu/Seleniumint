@@ -13,8 +13,8 @@ import utilities.TestBaseClass;
 import java.util.List;
 
 public class C05_GTT extends TestBaseClass {
-    String iphoneUrunTitle;
-    String productTitle;
+   static String iphoneUrunTitle;
+   static String productTitle;
 
     @Test
     public void test01(){
@@ -118,16 +118,17 @@ public class C05_GTT extends TestBaseClass {
 
     }
     @Test
-    public void test04(){
+    public void test04() {
 
         //1-sepetteki ürünlerle eklediğimiz ürünlerin aynı olduğunu isim ve fiyat olarak doğrulayın
         driver.findElement(By.id("nav-cart-count-container")).click();
 
 
-        String expectedBabyProductTitle=driver.findElement(By.xpath("(//span[@class='a-truncate-cut'])[5]")).getText();
-        String expectedIphoneTitle=driver.findElement(By.xpath("(//span[@class='a-truncate-cut'])[7]")).getText();
+        String expectedBabyProductTitle = driver.findElement(By.xpath("(//span[@class='a-truncate-cut'])[5]")).getText();
+        String expectedIphoneTitle = driver.findElement(By.xpath("(//span[@class='a-truncate-cut'])[6]")).getText();
 
-        Assert.assertEquals(expectedIphoneTitle,iphoneUrunTitle);
+        Assert.assertTrue(iphoneUrunTitle.contains(expectedIphoneTitle));
+        Assert.assertTrue(productTitle.contains(expectedBabyProductTitle));
 
 
     }
