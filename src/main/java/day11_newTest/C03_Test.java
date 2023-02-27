@@ -26,8 +26,14 @@ public class C03_Test extends TestBase {
         Actions actions=new Actions(driver);
         actions.click(driver.findElement(By.xpath("//i[@class='material-icons card_travel']"))).perform();
 
-         //WebElement cookie=driver.findElement(By.xpath("//span[text()='Close']"));
-        // cookie.click();
+        /*
+        WebElement iframe= driver.findElement(By.id("ad_iframe"));
+        driver.switchTo().frame(iframe);
+        WebElement closeButton=driver.findElement(By.xpath("(//span[@dir='auto'])[1]"));
+        closeButton.click();
+        driver.switchTo().parentFrame();
+        */
+        driver.navigate().refresh();
 
 
         JavascriptExecutor jsx=(JavascriptExecutor) driver;
@@ -39,7 +45,7 @@ public class C03_Test extends TestBase {
         Assert.assertEquals(expectedProduct,allProduct.size());
 
         //5. Enter product name in search input and click search button
-        searchBox= driver.findElement(By.xpath("//input[@name='search']"));
+        searchBox= driver.findElement(By.xpath("//input[@id='search_product']"));
         searchBox.sendKeys("Green Side Placket Detail T-Shirt");
 
         WebElement clickButton=driver.findElement(By.xpath("//i[@class='fa fa-search']"));
@@ -60,7 +66,7 @@ public class C03_Test extends TestBase {
 
         //9. Click 'Cart' button and verify that products are visible in cart
         WebElement addCart=driver.findElement(By.xpath("//*[text()='View Cart']"));
-        addCart.click();
+        jsx.executeScript("arguments[0].click();", addCart);
         Assert.assertTrue(driver.findElement(By.xpath("//*[text()='Green Side Placket Detail T-Shirt']")).isDisplayed());
 
         //10. Click 'Signup / Login' button and submit login details
